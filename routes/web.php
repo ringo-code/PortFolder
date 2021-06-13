@@ -13,8 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-    
-Route::get('/reposts', 'RepostController@index');
-});
+Route::get('', 'RepostController@index');
+
+Route::get('/signin','UserController@getSignin')
+->name('signin');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
